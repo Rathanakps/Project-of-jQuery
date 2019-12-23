@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Select Continues </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        .ruler{
+            border-left: 1px solid blue;
+            height: 50%;
+            position: absolute;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Step 1 create select -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form action="#">
+                    <select id="select" class="form-control">
+                        <option value="" disabled selected> Choose select recipes </option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <!-- Step 2 create recipes from api -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <table class="table table-borderless" id="recipe-result"></table>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <!-- Step 3 create member to increment and decrement of ingredients from api -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="input-group mb-3" id="all-member">
+                    <h4> Number of Persons &nbsp; &nbsp; </h4>
+                    <div class="input-group-append">
+                        <button type="button" id="minus"> &minus; </button>
+                    </div>
+                    <input type="number" class="form-control" value="1" disabled id="members">
+                    <div class="input-group-append">
+                        <button type="button" id="add"> &plus; </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <!-- Step 4 create ingredients from api and create ruler and create instruction from api -->
+    <div class="container mt-5">
+        <!-- create ruler -->
+        <div class="text-center ruler" id="show-rulers"></div>
+        <!-- create ingredients from api -->
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center" id="text-ingredient"> <h3> Ingredients </h3> </div>
+                <table class="table table-borderless" id="ingredient-result"></table>
+            </div>
+            <!-- create instruction from api -->
+            <div class="col-6">
+                <div class="text-center" id="text-instruction"> <h3> Instructions </h3> </div>
+                <p id="instruction-result"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/process.js"></script>
+</body>
+</html>

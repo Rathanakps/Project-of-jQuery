@@ -17,9 +17,10 @@ $(document).ready(() => {
         updateRecipe(selectId,increment);
     });
     $('#minus').on('click', () => {
+        getDecrement();
         var selectId = $('#select').val();
         var decrement = $('#members').val();
-        getDecrement(decrement,selectId);
+        updateRecipes(selectId,decrement);
     })
 })
 
@@ -61,12 +62,12 @@ var eachRecipe = (ricipeId) => {
             ShowInstructions(item.instructions);
             $('#members').val(item.nbGuests);
             oldMember = $('#members').val();
-            // console.log(oldMember);
+            console.log(oldMember);
         }
     })
 }
 
-// update recipe
+// update recipe of add
 var updateRecipe = (ricipeId,increment) => {
     // console.log(ricipeId);
     // console.log(increment);
@@ -79,8 +80,21 @@ var updateRecipe = (ricipeId,increment) => {
         }
     })
 }
+// update recipes of minus
+var updateRecipes = (ricipeId,decrement) => {
+    // console.log(ricipeId);
+    // console.log(increment);
+    allData.forEach(item => {
+        if(item.id == ricipeId){
+            // console.log(item.ingredients)
+            updateIngredients(item.ingredients, decrement);
+            $("#members").val(decrement);
+            // console.log(increment);
+        }
+    })
+}
 
-// update ingredient
+// update ingredient of add
 var updateIngredient=(ing ,increment)=>{
     // console.log(ing);
     resultUpdate = "";
@@ -99,24 +113,44 @@ var updateIngredient=(ing ,increment)=>{
     })
     $('#ingredient-result').html(resultUpdate);
 }
+// update ingredients of minus
+var updateIngredients=(ing ,decrement)=>{
+    // console.log(ing);
+    resultUpdate = "";
+    // console.log(increment);
+    ing.forEach(item =>{
+        // console.log(item.quantity * parseInt(increment) / oldMember);
+        var addIngredient = item.quantity * parseInt(decrement) / oldMember;
+        resultUpdate+= `
+        <tr>
+            <td> <img src="${item.iconUrl}" class="img-fluid" width="50px"> </td>
+            <td> ${addIngredient} </td>
+            <td> ${item.unit[0]} </td>
+            <td> ${item.name} </td>
+        </tr>
+        `; 
+    })
+    $('#ingredient-result').html(resultUpdate);
+}
 
 // Increment of member
 var getIncrement = () => {
     var increment = $('#members').val();
-    var addition = (parseInt(increment) + 1);
-    if(addition <= 15){
-    $("#members").val(addition);
-    // console.log(addition)
+    var allCalculate = (parseInt(increment) + 1);
+    if(allCalculate <= 15){
+    $("#members").val(allCalculate);
+    // console.log(allCalculate)
     }
 }
-// Decrement of member
-// var getDecrement = (minues) => {
-//     var reduce = (parseInt(minues) - 1);
-//     if(reduce >= 0){
-//         printOut(reduce);
-//     }
-// }
-// get id to output on member
+// decrement of member
+var getDecrement = () => {
+    var decrement = $('#members').val();
+    var allCalculate = (parseInt(decrement) - 1);
+    if(allCalculate >= 1){
+    $("#members").val(allCalculate);
+    // console.log(allCalculate)
+    }
+}
 
 // show Recipes
 function showRecipe(name,img){

@@ -21,7 +21,7 @@ $(document).ready(() => {
         var selectId = $('#select').val();
         var decrement = $('#members').val();
         updateRecipes(selectId,decrement);
-    })
+    });
 })
 
 // get api
@@ -62,7 +62,7 @@ var eachRecipe = (ricipeId) => {
             ShowInstructions(item.instructions);
             $('#members').val(item.nbGuests);
             oldMember = $('#members').val();
-            console.log(oldMember);
+            // console.log(oldMember);
         }
     })
 }
@@ -86,7 +86,6 @@ var updateRecipes = (ricipeId,decrement) => {
     // console.log(increment);
     allData.forEach(item => {
         if(item.id == ricipeId){
-            // console.log(item.ingredients)
             updateIngredients(item.ingredients, decrement);
             $("#members").val(decrement);
             // console.log(increment);
@@ -120,11 +119,11 @@ var updateIngredients=(ing ,decrement)=>{
     // console.log(increment);
     ing.forEach(item =>{
         // console.log(item.quantity * parseInt(increment) / oldMember);
-        var addIngredient = item.quantity * parseInt(decrement) / oldMember;
+        var minusIngredient = item.quantity * parseInt(decrement) / oldMember;
         resultUpdate+= `
         <tr>
             <td> <img src="${item.iconUrl}" class="img-fluid" width="50px"> </td>
-            <td> ${addIngredient} </td>
+            <td> ${minusIngredient} </td>
             <td> ${item.unit[0]} </td>
             <td> ${item.name} </td>
         </tr>

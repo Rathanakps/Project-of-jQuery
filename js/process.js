@@ -45,13 +45,16 @@ var chooseRecipes = (myData) => {
         `;
     });
     $('#select').append(option);
-    $('#show-rulers').hide();
+    // $('#show-rulers').hide();
     $('#text-ingredient').hide();
     $('#text-instruction').hide();
     $('#all-member').hide();
+    $('#show-border').hide();
+    $('#show-bordered').hide();
+    $('#text-member').hide();
 }
 
-// var defaultGest = 1;
+
 // get function to output
 var eachRecipe = (ricipeId) => {
     // updateRecipe(ricipeId);
@@ -161,7 +164,9 @@ function showRecipe(name,img){
         </tr>
     `;
     $('#recipe-result').html(result);
-    $('#show-rulers').show();
+    // $('#show-rulers').show();
+    $('#show-border').show();
+    $('#show-bordered').show();
 }
 
 // show ingredient
@@ -193,6 +198,7 @@ var ShowInstructions = (instru) => {
     $('#instruction-result').html(instruction);
     $('#text-instruction').show();
     $('#all-member').show();
+    $('#text-member').show();
     }
 }
 

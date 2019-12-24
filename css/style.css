@@ -1,0 +1,22 @@
+body {
+    background-image: url(../image2.jpg);
+    
+}
+/* .ruler {
+    border-left: 1px solid blue;
+    height: 30%;
+    position: absolute;
+    left: 50%;
+} */
+h4{
+    color: orangered;
+}
+h3{
+    color: orangered;
+}
+.col-5{
+    border:2px solid red;
+    background: pink;
+    bottom: 10px;
+    border-radius: 40px;
+}
